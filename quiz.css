@@ -1,0 +1,78 @@
+@import url(./3_letter_code.css);
+
+.sel_wrapper {
+    vertical-align: middle;
+}
+.sel {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* main > div:nth-child(2) {
+    margin-top: 15px;
+} */
+.h {
+    margin: 10px auto;
+}
+.quiz_wrapper, .result_wrapper {
+    display: none;
+}
+.cor_ans {
+    color: blue;
+}
+.inc_ans {
+    color: red;
+}
+.q_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.q_wrap, .s_wrap {
+    margin-top: 10px;
+}
+.btn_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin: 15px auto;
+}
+.btn_sol {
+    width: 150px;
+    margin: 15px auto;
+}
+/* .btn_sol button { margin: 0 auto; } */
+table {
+    margin: 0 auto;
+    width: 80%;
+    /* border-collapse: separate;
+    border-spacing: 10px 10px; */
+    border-collapse: collapse;
+}
+/* .table3 {
+    width: 100%;
+    border-collapse: collapse;
+} */
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table thead {
+    background-color: #333;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+/* .grp_tbl { display: none; } */
+/* tr { width: 100%; }
+th { 
+    width: 33%; 
+    text-align: center;
+} */
+/* th, td { text-align: center; } */
+/* .q_wrap:nth-of-type(2), .s_wrap:nth-of-type(2) {} */

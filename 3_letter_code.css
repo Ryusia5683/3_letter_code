@@ -1,0 +1,54 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+html,body{ margin:0; }
+*{
+    box-sizing: border-box;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ul,li{
+    list-style-type: none;
+    margin:0; padding:0;
+}
+h1,h2,h3,h4,h5,h6,p,figure{ margin:0; }
+img{
+    vertical-align: top;
+    width: 100%;
+}
+a{text-decoration: none;}
+
+main {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.rapper {
+    width: 100%;
+}
+
+h1 {
+    font-size: 30px;
+}
+.btnRapper{
+    margin: 10px;
+}
+select {
+    vertical-align: middle;
+    padding: 10px;
+}
+button {
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+input {
+    padding: 10px;
+}
+.rapper {
+    width: 80%;
+    margin: 100px auto;
+    text-align: center;
+}

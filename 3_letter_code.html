@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./3_letter_code.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        let jap = [
+            ['TYO', 'NRT', 'HND', 'OSA', 'KIX', 'AOJ', 'SPK', 'CTS', 
+            'KMQ', 'FSZ', 'KKJ', 'FUK', 'KIJ', 'KOJ', 'NGS', 'OIT', 'OKJ', 
+            'AXT', 'NGO', 'HKD', 'OKA', 'AJK'], 
+            ['TOKYO', 'TOKYO/NARITA', 'TOKYO/HANEDA', 'OSAKA',	'OSAKA/KANSAI', 'AOMORI', 'SAPPORO', 'SAPPORO/CHITOSE', 'KOMATSU', 
+            'SHIZUOKA', 'KITAKYUSHU', 'FUKUOKA', 'NIIGATA', 'KAGOSHIMA', 'NAGASAKI', 'OITA', 'OKAYAMA', 'AKITA', 'NAGOYA', 'HAKODATE', 
+            'OKINAWA', 'ASAHIKAWA']
+        ];
+
+        let chn = [
+            ['BJS/PEK', 'TNA', 'TAO', 'SHA', 'SHE', 'TSN', 'XMN', 'YNT', 'CSX', 'SZX', 'CAN', 'SIA/XIY', 'HGH', 'NKG', 'KWE', 'MFM', 
+            'DLC', 'KMG', 'SYX', 'PVG', 'WUH', 'YNJ', 'UBN', 'WEH', 'HKG', 'CGO', 'URC', 'MDG', 'TXN', 'HFE', 'NNG', 'DYG'], 
+            ['BEIJING', 'JINAN', 'QINGDAO', 'SHANGHAI', 'SHENYANG', 'TIANJIN', 'XIAMEN', 'YANTAI', 'CHANGSHA', 'SHENZHEN', 'GUANGZHOU', 
+            'XIAN', 'HANGZHOU', 'NANJING', 'GUIYANG', 'MACAU', 'DALIAN', 'KUNMING', 'SANYA', 'SHANGHAI', 'WUHAN', 'YANJI', 
+            'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE']
+        ];
+
+        let southAsia = [
+            ['BKK', 'DMK', 'HKT', 'PNH', 'MNL', 'SIN', 'TPE', 'BOM', 'BKI', 'SAI', 'CNX', 'RGN', 'CMB', 'VTE', 'DEL', 'RMQ', 'JKT', 
+            'CGK', 'KUL', 'PEN', 'HAN', 'SGN', 'DAD', 'DPS', 'CEB', 'KTM', 'MLE', 'CXR', 'CRK', 'DLI', 'PQC'], 
+            ['BANGKOK/BANGKOK SUVARNABHUMI INTERNATIONAL APT', 'BANGKOK/DON MUEANG', 'PHUKET', 'PHNOM PENH', 'MANILA', 'SINGAPORE', 
+            'TAIPEI', 'MUMBAI', 'KOTA 	KINABALU', 'SIEM REAP', 'CHIANGMAI', 'YANGON', 	'COLOMBO', 'VIENTIENE', 'DELHI', 'TAI CHUNG', 
+            'JAKARTA', 'JAKARTA - SOEKARNO HATTA', 'KUALA LUMPUR', 'PENANG', 'HANOI', 'HO CHI MINH CITY', 'DANANG', 'DENPARSAR', 
+            'CEBU', 'KATHMANDU', 'MALE', 'NHA TRANG', 'CLARK', 'DALAT', 'PHU QUOC']
+        ];
+
+        let oce = [
+            ['AKL', 'NAN', 'GUM', 'ROR', 'BNE', 'SYD', 'MEL', 'SPN'], 
+            ['AUCKLAND', 'FIJI, NANDI', 'GUAM', 'KOROR', 	'BRISBANE', 'SYDNEY', 'MELBOURNE', 'SAIPAN']
+        ];
+
+        let afk = [
+            ['NBO'], 
+            ['NAIROBI']
+        ];
+
+        let america = [
+            ['ATL', 'CHI', 'ORD', 'DFW', 'NYC', 'JFK', 'SEA', 'LAS', 'GRU', 'HOU', 'DTT', 'DTW', 'HNL', 'LAX', 'WAS', 'IAD', 'SFO', 
+            'YVR', 'YTO', 'YYZ', 'SAO', 'IAH', 'BOS'], 
+            ['ATLANTA', 'CHICAGO', 'OHARE', 'DALLAS FORT WORTH', 'NEW YORK', 'NEW YORK/JOHN F KENNEDY', 'SEATTLE', 'LAS VEGAS', 
+            'SAO PAULO/GARULHOS', 'HOUSTON', 'DETROIT', 'DETROIT/METROPOLITAN WAYNE COUNTY', 'HONOLULU', 'LOS ANGELES', 
+            'WASHINGTON DC', 'WASHINGTON DC/DULLES', 'SAN FRANCISCO', 'VANCOUVER', 'TORONTO', 'TORONTO/LESTER B PEARSON', 'SAO PAULO', 
+            'HOUSTON/G BUSH INTERCONT', 'BOSTON']
+        ];
+
+        let euMe = [
+            ['CAI', 'PAR', 'CDG', 'AUH', 'DXB', 'ROM', 'FCO', 'VVO', 'PRG', 'IST', 'TAS', 'TLV', 'VIE', 'IKT', 'RUH', 'LIS', 'KHV', 
+            'FRA', 'LON', 'LHR', 'LGW', 'ZRH', 'MOW', 'SVO', 'LED', 'AMS', 'MAD', 'BCN', 'MIL', 'MXP', 'JED', 'ZAG', 'BUD', 'UUS'], 
+            ['CAIRO', 'PARIS', 'PARIS/CHARLES DE GAULLE', 'ABU DHABI', 'DUBAI', 'ROME', 'ROME/LEONARDO DA VINCI', 'VLADIVOSTOK', 
+            'PRAGUE', 'ISTANBUL', 'TASHKENT', 'TEL AVIV', 	'VIENNA', 'IRKUTSK', 'RIYADH', 'KHABAROVSK', 'FRANKFURT', 'LONDON', 
+            'LONDON/HEATHROW', 'LONDON/GATWICK', 'ZURICH', 'MOSCOW', 'MOSCOW/SHEREMETYEVO', 'ST PETERSBURG', 'AMSTERDAM', 'MADRID', 
+            'BARCELONA', 'MILAN', 'MILAN/MALPENSA', 'JEDDAH', 'ZAGREB', 'BUDAPEST', 'YUZHNO-SAKHALINSK']
+        ];
+
+        let cde = [
+            [
+                ['TYO', 'NRT', 'HND', 'OSA', 'KIX', 'AOJ', 'SPK', 'CTS', 'KMQ', 'FSZ', 'KKJ', 'FUK', 'KIJ', 'KOJ', 'NGS', 'OIT', 
+                'OKJ', 'AXT', 'NGO', 'HKD', 'OKA', 'AJK'], 
+                ['BJS/PEK', 'TNA', 'TAO', 'SHA', 'SHE', 'TSN', 'XMN', 'YNT', 'CSX', 'SZX', 'CAN', 'SIA/XIY', 'HGH', 'NKG', 'KWE', 
+                'MFM', 'DLC', 'KMG', 'SYX', 'PVG', 'WUH', 'YNJ', 'UBN', 'WEH', 'HKG', 'CGO', 'URC', 'MDG', 'TXN', 'HFE', 'NNG', 'DYG'], 
+                ['BKK', 'DMK', 'HKT', 'PNH', 'MNL', 'SIN', 'TPE', 'BOM', 'BKI', 'SAI', 'CNX', 'RGN', 'CMB', 'VTE', 'DEL', 'RMQ', 
+                'JKT', 'CGK', 'KUL', 'PEN', 'HAN', 'SGN', 'DAD', 'DPS', 'CEB', 'KTM', 'MLE', 'CXR', 'CRK', 'DLI', 'PQC'], 
+                ['AKL', 'NAN', 'GUM', 'ROR', 'BNE', 'SYD', 'MEL', 'SPN'], 
+                ['AUCKLAND', 'FIJI, NANDI', 'GUAM', 'KOROR', 'BRISBANE', 'SYDNEY', 'MELBOURNE', 'SAIPAN'], 
+                ['NBO'], 
+                ['ATL', 'CHI', 'ORD', 'DFW', 'NYC', 'JFK', 'SEA', 'LAS', 'GRU', 'HOU', 'DTT', 'DTW', 'HNL', 'LAX', 'WAS', 'IAD', 
+                'SFO', 'YVR', 'YTO', 'YYZ', 'SAO', 'IAH', 'BOS'], 
+                ['CAI', 'PAR', 'CDG', 'AUH', 'DXB', 'ROM', 'FCO', 'VVO', 'PRG', 'IST', 'TAS', 'TLV', 'VIE', 'IKT', 'RUH', 'LIS', 
+                'KHV', 'FRA', 'LON', 'LHR', 'LGW', 'ZRH', 'MOW', 'SVO', 'LED', 'AMS', 'MAD', 'BCN', 'MIL', 'MXP', 'JED', 'ZAG', 
+                'BUD', 'UUS']
+            ],
+            [
+                ['TOKYO', 'TOKYO/NARITA', 'TOKYO/HANEDA', 'OSAKA', 'OSAKA/KANSAI', 'AOMORI', 'SAPPORO', 'SAPPORO/CHITOSE', 'KOMATSU', 
+                'SHIZUOKA', 'KITAKYUSHU', 'FUKUOKA', 'NIIGATA', 'KAGOSHIMA', 'NAGASAKI', 'OITA', 'OKAYAMA', 'AKITA', 'NAGOYA', 
+                'HAKODATE', 'OKINAWA', 'ASAHIKAWA'], 
+                ['BEIJING', 'JINAN', 'QINGDAO', 'SHANGHAI', 'SHENYANG', 'TIANJIN', 'XIAMEN', 'YANTAI', 'CHANGSHA', 'SHENZHEN', 
+                'GUANGZHOU', 'XIAN', 'HANGZHOU', 'NANJING', 'GUIYANG', 'MACAU', 'DALIAN', 'KUNMING', 'SANYA', 'SHANGHAI', 'WUHAN', 
+                'YANJI', 'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 
+                'ZHANGJIAJIE'], 
+                ['BANGKOK/BANGKOK SUVARNABHUMI INTERNATIONAL APT', 'BANGKOK/DON MUEANG', 'PHUKET', 'PHNOM PENH', 'MANILA', 
+                'SINGAPORE', 'TAIPEI', 'MUMBAI', 'KOTA KINABALU', 'SIEM REAP', 'CHIANGMAI', 'YANGON', 'COLOMBO', 'VIENTIENE', 
+                'DELHI', 'TAI CHUNG', 'JAKARTA', 'JAKARTA - SOEKARNO HATTA', 'KUALA LUMPUR', 'PENANG', 'HANOI', 'HO CHI MINH CITY', 
+                'DANANG', 'DENPARSAR', 'CEBU', 'KATHMANDU', 'MALE', 'NHA TRANG', 'CLARK', 'DALAT', 'PHU QUOC'], 
+                ['AUCKLAND', 'FIJI, NANDI', 'GUAM', 'KOROR', 'BRISBANE', 'SYDNEY', 'MELBOURNE', 'SAIPAN'], 
+                ['NAIROBI'], 
+                ['ATLANTA', 'CHICAGO', 'OHARE', 'DALLAS FORT WORTH', 'NEW YORK', 'NEW YORK/JOHN F KENNEDY', 'SEATTLE', 'LAS VEGAS', 
+                'SAO PAULO/GARULHOS', 'HOUSTON', 'DETROIT', 'DETROIT/METROPOLITAN WAYNE COUNTY', 'HONOLULU', 'LOS ANGELES', 
+                'WASHINGTON DC', 'WASHINGTON DC/DULLES', 'SAN FRANCISCO', 'VANCOUVER', 'TORONTO', 'TORONTO/LESTER B PEARSON', 
+                'SAO PAULO', 'HOUSTON/G BUSH INTERCONT', 'BOSTON'], 
+                ['CAIRO', 'PARIS', 'PARIS/CHARLES DE GAULLE', 'ABU DHABI', 'DUBAI', 'ROME', 'ROME/LEONARDO DA VINCI', 'VLADIVOSTOK', 
+                'PRAGUE', 'ISTANBUL', 'TASHKENT', 'TEL AVIV', 'VIENNA', 'IRKUTSK', 'RIYADH', 'KHABAROVSK', 'FRANKFURT', 'LONDON', 
+                'LONDON/HEATHROW', 'LONDON/GATWICK', 'ZURICH', 'MOSCOW', 'MOSCOW/SHEREMETYEVO', 'ST PETERSBURG', 'AMSTERDAM', 
+                'MADRID', 'BARCELONA', 'MILAN', 'MILAN/MALPENSA', 'JEDDAH', 'ZAGREB', 'BUDAPEST', 'YUZHNO-SAKHALINSK']
+            ]
+        ];
+
+
+        let rand = function(n){
+            return Math.floor( Math.random() * n );
+        }
+
+
+
+
+    </script>
+    <main>
+        <div class="rapper">
+            <h1>3 Letter Code</h1>
+            <div class="btnRapper">
+                <button onclick="location.href='./per_area.html'">지역별</button>
+                <button onclick="location.href='./overall.html'">전체</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./quiz.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cde = [
+            [
+                ['TYO', 'NRT', 'HND', 'OSA', 'KIX', 'AOJ', 'SPK', 'CTS', 
+                'KMQ', 'FSZ', 'KKJ', 'FUK', 'KIJ', 'KOJ', 'NGS', 'OIT', 'OKJ', 
+                'AXT', 'NGO', 'HKD', 'OKA', 'AKJ'], 
+                ['TOKYO', 'TOKYO/NARITA', 'TOKYO/HANEDA', 'OSAKA',	'OSAKA/KANSAI', 'AOMORI', 'SAPPORO', 'SAPPORO/CHITOSE', 'KOMATSU', 
+                'SHIZUOKA', 'KITAKYUSHU', 'FUKUOKA', 'NIIGATA', 'KAGOSHIMA', 'NAGASAKI', 'OITA', 'OKAYAMA', 'AKITA', 'NAGOYA', 'HAKODATE', 
+                'OKINAWA', 'ASAHIKAWA']
+            ], 
+            [
+                ['BJS/PEK', 'TNA', 'TAO', 'SHA', 'SHE', 'TSN', 'XMN', 'YNT', 'CSX', 'SZX', 'CAN', 'SIA/XIY', 'HGH', 'NKG', 'KWE', 'MFM', 
+                'DLC', 'KMG', 'SYX', 'PVG', 'WUH', 'YNJ', 'UBN', 'WEH', 'HKG', 'CGO', 'URC', 'MDG', 'TXN', 'HFE', 'NNG', 'DYG'], 
+                ['BEIJING', 'JINAN', 'QINGDAO', 'SHANGHAI(상하이/홍차오)', 'SHENYANG', 'TIANJIN', 'XIAMEN', 'YANTAI', 'CHANGSHA', 'SHENZHEN', 'GUANGZHOU', 
+                'XIAN', 'HANGZHOU', 'NANJING', 'GUIYANG', 'MACAU', 'DALIAN', 'KUNMING', 'SANYA', 'SHANGAI(상하이/푸동)', 'WUHAN', 'YANJI', 
+                'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE']
+            ], 
+            [
+                ['BKK', 'DMK', 'HKT', 'PNH', 'MNL', 'SIN', 'TPE', 'BOM', 'BKI', 'SAI', 'CNX', 'RGN', 'CMB', 'VTE', 'DEL', 'RMQ', 'JKT', 
+                'CGK', 'KUL', 'PEN', 'HAN', 'SGN', 'DAD', 'DPS', 'CEB', 'KTM', 'MLE', 'CXR', 'CRK', 'DLI', 'PQC'], 
+                ['BANGKOK/BANGKOK SUVARNABHUMI INTERNATIONAL APT', 'BANGKOK/DON MUEANG', 'PHUKET', 'PHNOM PENH', 'MANILA', 'SINGAPORE', 
+                'TAIPEI', 'MUMBAI', 'KOTA 	KINABALU', 'SIEM REAP', 'CHIANGMAI', 'YANGON', 	'COLOMBO', 'VIENTIENE', 'DELHI', 'TAI CHUNG', 
+                'JAKARTA', 'JAKARTA/SOEKARNO HATTA', 'KUALA LUMPUR', 'PENANG', 'HANOI', 'HO CHI MINH CITY', 'DANANG', 'DENPARSAR', 
+                'CEBU', 'KATHMANDU', 'MALE', 'NHA TRANG', 'CLARK', 'DALAT', 'PHU QUOC']
+            ], 
+            [
+                ['AKL', 'NAN', 'GUM', 'ROR', 'BNE', 'SYD', 'MEL', 'SPN', 'NBO'], 
+                ['AUCKLAND', 'FIJI, NANDI', 'GUAM', 'KOROR', 'BRISBANE', 'SYDNEY', 'MELBOURNE', 'SAIPAN', 'NAIROBI']
+            ], 
+            [
+                ['ATL', 'CHI', 'ORD', 'DFW', 'NYC', 'JFK', 'SEA', 'LAS', 'GRU', 'HOU', 'DTT', 'DTW', 'HNL', 'LAX', 'WAS', 'IAD', 'SFO', 
+                'YVR', 'YTO', 'YYZ', 'SAO', 'IAH', 'BOS'], 
+                ['ATLANTA', 'CHICAGO', 'OHARE', 'DALLAS FORT WORTH', 'NEW YORK', 'NEW YORK/JOHN F KENNEDY', 'SEATTLE', 'LAS VEGAS', 
+                'SAO PAULO/GUARULHOS', 'HOUSTON', 'DETROIT', 'DETROIT/METROPOLITAN WAYNE COUNTY', 'HONOLULU', 'LOS ANGELES', 
+                'WASHINGTON DC', 'WASHINGTON DC/DULLES', 'SAN FRANCISCO', 'VANCOUVER', 'TORONTO', 'TORONTO/LESTER B PEARSON', 'SAO PAULO', 
+                'HOUSTON/G BUSH INTERCONT', 'BOSTON']
+            ], 
+            [
+                ['CAI', 'PAR', 'CDG', 'AUH', 'DXB', 'ROM', 'FCO', 'VVO', 'PRG', 'IST', 'TAS', 'TLV', 'VIE', 'IKT', 'RUH', 'LIS', 'KHV', 
+                'FRA', 'LON', 'LHR', 'LGW', 'ZRH', 'MOW', 'SVO', 'LED', 'AMS', 'MAD', 'BCN', 'MIL', 'MXP', 'JED', 'ZAG', 'BUD', 'UUS'], 
+                ['CAIRO', 'PARIS', 'PARIS/CHARLES DE GAULLE', 'ABU DHABI', 'DUBAI', 'ROME', 'ROME/LEONARDO DA VINCI', 'VLADIVOSTOK', 
+                'PRAGUE', 'ISTANBUL', 'TASHKENT', 'TEL AVIV', 'VIENNA', 'IRKUTSK', 'RIYADH', 'LISBON', 'KHABAROVSK', 'FRANKFURT', 'LONDON', 
+                'LONDON/HEATHROW', 'LONDON/GATWICK', 'ZURICH', 'MOSCOW', 'MOSCOW/SHEREMETYEVO', 'ST PETERSBURG', 'AMSTERDAM', 'MADRID', 
+                'BARCELONA', 'MILAN', 'MILAN/MALPENSA', 'JEDDAH', 'ZAGREB', 'BUDAPEST', 'YUZHNO-SAKHALINSK']
+            ]
+        ];
+
+        let grpCde = [
+            [
+                ['TYO', 'NRT', 'HND', 'OSA', 'KIX', 'AOJ', 'SPK', 'CTS', 'KMQ', 'FSZ', 'KKJ', 'FUK', 'KIJ', 'KOJ', 'NGS', 'OIT', 'OKJ', 'AXT', 'NGO', 'HKD', 'OKA', 'AKJ', 
+                'BJS/PEK', 'TNA', 'TAO', 'SHA', 'SHE', 'TSN', 'XMN', 'YNT', 'CSX', 'SZX', 'CAN', 'SIA/XIY', 'HGH', 'NKG', 'KWE', 'MFM', 'DLC', 'KMG', 'SYX', 'PVG', 'WUH', 
+                'YNJ', 'UBN', 'WEH', 'HKG', 'CGO', 'URC', 'MDG', 'TXN', 'HFE', 'NNG', 'DYG'], 
+                ['TOKYO', 'TOKYO/NARITA', 'TOKYO/HANEDA', 'OSAKA',	'OSAKA/KANSAI', 'AOMORI', 'SAPPORO', 'SAPPORO/CHITOSE', 'KOMATSU', 'SHIZUOKA', 'KITAKYUSHU', 'FUKUOKA', 
+                'NIIGATA', 'KAGOSHIMA', 'NAGASAKI', 'OITA', 'OKAYAMA', 'AKITA', 'NAGOYA', 'HAKODATE', 'OKINAWA', 'ASAHIKAWA', 'BEIJING', 'JINAN', 'QINGDAO', 'SHANGHAI(상하이/홍차오)', 
+                'SHENYANG', 'TIANJIN', 'XIAMEN', 'YANTAI', 'CHANGSHA', 'SHENZHEN', 'GUANGZHOU', 'XIAN', 'HANGZHOU', 'NANJING', 'GUIYANG', 'MACAU', 'DALIAN', 'KUNMING', 
+                'SANYA', 'SHANGAI(상하이/푸동)', 'WUHAN', 'YANJI', 'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE']
+            ], 
+            [
+                ['BKK', 'DMK', 'HKT', 'PNH', 'MNL', 'SIN', 'TPE', 'BOM', 'BKI', 'SAI', 'CNX', 'RGN', 'CMB', 'VTE', 'DEL', 'RMQ', 'JKT', 'CGK', 'KUL', 'PEN', 'HAN', 'SGN', 
+                'DAD', 'DPS', 'CEB', 'KTM', 'MLE', 'CXR', 'CRK', 'DLI', 'PQC', 'AKL', 'NAN', 'GUM', 'ROR', 'BNE', 'SYD', 'MEL', 'SPN', 'NBO'
+                ], 
+                ['BANGKOK/BANGKOK SUVARNABHUMI INTERNATIONAL APT', 'BANGKOK/DON MUEANG', 'PHUKET', 'PHNOM PENH', 'MANILA', 'SINGAPORE', 'TAIPEI', 'MUMBAI', 'KOTA KINABALU', 
+                'SIEM REAP', 'CHIANGMAI', 'YANGON', 'COLOMBO', 'VIENTIENE', 'DELHI', 'TAI CHUNG', 'JAKARTA', 'JAKARTA/SOEKARNO HATTA', 'KUALA LUMPUR', 'PENANG', 'HANOI', 
+                'HO CHI MINH CITY', 'DANANG', 'DENPARSAR', 'CEBU', 'KATHMANDU', 'MALE', 'NHA TRANG', 'CLARK', 'DALAT', 'PHU QUOC', 'AUCKLAND', 'FIJI, NANDI', 'GUAM', 'KOROR', 
+                'BRISBANE', 'SYDNEY', 'MELBOURNE', 'SAIPAN', 'NAIROBI']
+            ],  
+            [
+                ['ATL', 'CHI', 'ORD', 'DFW', 'NYC', 'JFK', 'SEA', 'LAS', 'GRU', 'HOU', 'DTT', 'DTW', 'HNL', 'LAX', 'WAS', 'IAD', 'SFO', 'YVR', 'YTO', 'YYZ', 'SAO', 'IAH', 
+                'BOS', 'CAI', 'PAR', 'CDG', 'AUH', 'DXB', 'ROM', 'FCO', 'VVO', 'PRG', 'IST', 'TAS', 'TLV', 'VIE', 'IKT', 'RUH', 'LIS', 'KHV', 'FRA', 'LON', 'LHR', 'LGW', 
+                'ZRH', 'MOW', 'SVO', 'LED', 'AMS', 'MAD', 'BCN', 'MIL', 'MXP', 'JED', 'ZAG', 'BUD', 'UUS'], 
+                ['ATLANTA', 'CHICAGO', 'OHARE', 'DALLAS FORT WORTH', 'NEW YORK', 'NEW YORK/JOHN F KENNEDY', 'SEATTLE', 'LAS VEGAS', 'SAO PAULO/GUARULHOS', 'HOUSTON', 
+                'DETROIT', 'DETROIT/METROPOLITAN WAYNE COUNTY', 'HONOLULU', 'LOS ANGELES', 'WASHINGTON DC', 'WASHINGTON DC/DULLES', 'SAN FRANCISCO', 'VANCOUVER', 'TORONTO', 
+                'TORONTO/LESTER B PEARSON', 'SAO PAULO', 'HOUSTON/G BUSH INTERCONT', 'BOSTON', 'CAIRO', 'PARIS', 'PARIS/CHARLES DE GAULLE', 'ABU DHABI', 'DUBAI', 'ROME', 
+                'ROME/LEONARDO DA VINCI', 'VLADIVOSTOK', 'PRAGUE', 'ISTANBUL', 'TASHKENT', 'TEL AVIV', 'VIENNA', 'IRKUTSK', 'RIYADH', 'LISBON', 'KHABAROVSK', 'FRANKFURT', 
+                'LONDON', 'LONDON/HEATHROW', 'LONDON/GATWICK', 'ZURICH', 'MOSCOW', 'MOSCOW/SHEREMETYEVO', 'ST PETERSBURG', 'AMSTERDAM', 'MADRID', 'BARCELONA', 'MILAN', 
+                'MILAN/MALPENSA', 'JEDDAH', 'ZAGREB', 'BUDAPEST', 'YUZHNO-SAKHALINSK']
+            ]
+        ];
+
+
+        let rand = function(n){
+            return Math.floor( Math.random() * n );
+        }
+
+        let numArr = [];
+        let qArr = [];
+        let ctgr = '';
+        let ind = 0;
+        let ind_load = function () {
+            numArr = [];
+            qArr = [];
+            ind = document.getElementById('sel_ind').value; 
+            ctgr = 'i';
+            for (let i = 0; i < 10; i++) {
+                if ($('#' + i).text() != '') {
+                    $('#' + i).text('');
+                    $('input[name=' + i + ']').val('');
+                    $('#r' + i).text('');
+                    $('.result' + i).text('');
+                    $('#c' + i).text('');
+                    $('.result_wrapper').css('display', 'none');
+                }
+            }
+            for (let i = 0; i < 10; i++) {
+                let length = rand(cde[ind][0].length);
+                let n1 = rand(2);
+                let n2 = rand(length);
+                if (!sameNum(n2)) {
+                    numArr.push(ind + ',' + n1 + ',' + n2);
+                    qArr.push(cde[ind][n1][n2]);
+                    $('#' + i).text(cde[ind][n1][n2]); 
+                    $('#r' + i).text(cde[ind][n1][n2]);
+                    $('.quiz_wrapper').css('display', 'block');
+                } else {
+                    i--;
+                }
+            }
+        }
+        let grp = 0;
+        let grp_load = function () {
+            numArr = [];
+            qArr = [];
+            grp = document.getElementById('sel_grp').value; 
+            ctgr = 'g';
+            for (let i = 0; i < 10; i++) {
+                if ($('#' + i).text() != '') {
+                    $('#' + i).text('');
+                    $('input[name=' + i + ']').val('');
+                    $('#r' + i).text('');
+                    $('.result' + i).text('');
+                    $('#c' + i).text('');
+                    $('.result_wrapper').css('display', 'none');
+                }
+            }
+            for (let i = 0; i < 10; i++) {
+                let length = rand(grpCde[grp][0].length);
+                let n1 = rand(2);
+                let n2 = rand(length);
+                if (!sameNum(n2)) {
+                    numArr.push(grp + ',' + n1 + ',' + n2);
+                    qArr.push(grpCde[grp][n1][n2]);           
+                    $('#r' + i).text(grpCde[grp][n1][n2]);
+                    $('#' + i).text(grpCde[grp][n1][n2]);
+                    $('.quiz_wrapper').css('display', 'block');
+                } else {
+                    i--;
+                }
+            }
+        }
+        let ind_show = function() {
+            if ($('#0').text() === '' || $('#c0').text() != '') {
+                ind_load();
+                return;
+            }
+            for (let i = 0; i < 10; i++) {
+                if ($('input[name=' + i + ']').val() == '') {
+                    if(confirm('문제를 변경하시겠습니까?')) {
+                        ind_load();
+                        return;
+                    } else {
+                        alert('모든 답을 입력하세요.');
+                        return;
+                    }
+                }
+            }            
+        }
+
+        function sameNum (n) {
+            for (var i = 0; i < numArr.length; i++) {
+                if (n == numArr[i].split(',')[2]) {
+                    return true;
+                }    
+            }    
+            return false;
+        }
+
+        let grp_show = function() {
+            if ($('#0').text() == '' || $('#c0').text() != '') {
+                grp_load();
+                return;
+            }
+            for (let i = 0; i < 10; i++) {
+                if ($('input[name=' + i + ']').val() == '') {
+                    if(confirm('문제를 변경하시겠습니까?')) {
+                        grp_load();
+                        return;
+                    } else {
+                        alert('모든 답을 입력하세요.');
+                        return;
+                    }
+                }
+            }   
+            
+        }
+
+        let index = function() {
+            location.href="./3_letter_code.html";
+            
+        }
+
+
+        let sub = function() {
+            for (let i = 0; i < 10; i++) {
+                
+                if ($('input[name=' + i + ']').val() == '') {
+                    alert('모든 답을 입력하세요.');
+                    return;
+                }
+            }
+            for (let i = 0; i < 10; i++) {
+                $('.result' + i).removeClass('cor_ans');
+                $('.result' + i).removeClass('inc_ans');
+                let userAns = $('input[name=' + i + ']').val().toUpperCase().replaceAll(' ', '').replaceAll(',', '');
+                $('.result' + i).text(userAns);
+                let an1 = numArr[i].split(',')[1];
+                let an2 = numArr[i].split(',')[2];
+                if (an1 == 0)   an1 = 1
+                else            an1 = 0;
+                let corAns = '';
+                let isSlash = false;
+                let isSlashUser = false;
+                let match = false;
+                if (userAns.includes('/'))      isSlashUser = true;
+                if (ctgr == 'i') {
+                    corAns = cde[ind][an1][an2].replaceAll(' ', '').replaceAll(',', '');
+                } else if (ctgr == 'g') {
+                    corAns = grpCde[grp][an1][an2].replaceAll(' ', '').replaceAll(',', '');
+                } else {
+                    alert('지역을 선택하세요.');
+                    return;
+                }                        
+                if (corAns.includes('/'))       isSlash = true;
+                if ((isSlash && isSlashUser) || (!isSlash && !isSlashUser)) {
+                    if (corAns == userAns)      match = true;
+                } else if (isSlash && !isSlashUser) {
+                    if (corAns.split('/')[1].includes(userAns) || corAns.split('/')[0] == userAns)        match = true;
+                } 
+                if (ctgr == 'i') {
+                    corAns = cde[ind][an1][an2];
+                } else {
+                    corAns = grpCde[grp][an1][an2];
+                }
+                // $('.result' + i).after('<td class="cor_ans">' + corAns + '<td/>');
+                $('#c' + i).text(corAns);
+                // $('.result' + i).after('<td class="cor_ans">' + corAns + "</td>");
+                if (match) {
+                    $('.result' + i).addClass('cor_ans');
+                } else {
+                    $('.result' + i).addClass('inc_ans');
+                }
+                
+            }
+            $('.quiz_wrapper').css('display', 'none');
+            $('.result_wrapper').css('display', 'block');
+            
+            
+        }
+
+        let re = function() {
+            window.location.reload();
+        }
+
+    </script>
+    <main>
+        <div class="sel">
+            <div class="sel_wrapper">
+                <select name="sel_ind" id="sel_ind">
+                    <option value="0">일본</option>
+                    <option value="1">중국</option>
+                    <option value="2">동남아/서남아</option>
+                    <option value="3">대양주 + 아프리카</option>
+                    <option value="4">미주</option>
+                    <option value="5">구주</option>
+                </select>
+                <button onclick="ind_show()">선택</button>
+            </div>
+            <div class="sel_wrapper">
+                <select name="sel_grp" id="sel_grp">
+                    <option value="0">일본 + 중국</option>
+                    <option value="1">동남아/서남아 + 대양주 + 아프리카</option>
+                    <option value="2">미주/남미 + 구주/중동</option>
+                </select>
+                <button onclick="grp_show()">선택</button>
+            </div>
+        </div>
+        <hr />
+        <div class="h">
+            <h2>도시/공항은 도시 OR 공항 OR 도시/공항 형태로 입력</h1>
+            <h3>e.g. TORONTO or LESTER B PEARSON or TORONTO/LESTER B PEARSON</h3>
+        </div>
+        <hr />
+        <div class="quiz_wrapper">
+            <div>
+                <div class="q_wrap">
+                    <p class="quiz" id="0"></p>
+                    <input type="text" name="0" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="1"></p>
+                    <input type="text" name="1" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="2"></p>
+                    <input type="text" name="2" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="3"></p>
+                    <input type="text" name="3" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="4"></p>
+                    <input type="text" name="4" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="5"></p>
+                    <input type="text" name="5" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="6"></p>
+                    <input type="text" name="6" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="7"></p>
+                    <input type="text" name="7" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="8"></p>
+                    <input type="text" name="8" autocomplete="off" />
+                </div>
+                <div class="q_wrap">
+                    <p class="quiz" id="9"></p>
+                    <input type="text" name="9" autocomplete="off" />
+                </div>
+            </div>
+            <div>
+                <input type="hidden" name="ctgr" value="" />
+                <input type="hidden" name="q" value="" />
+                <input type="hidden" name="a" value="" />
+            </div>
+            <hr />
+            <div class="btn_wrap">
+                <button onclick="sub()" id="subBtn">정답 제출</button>
+                <button onclick="javascript:location.href='./3_letter_code.html'">메인으로 돌아가기</button>
+            </div>
+        </div>
+        <div class="result_wrapper">
+            <table>
+                <thead>
+                    <tr class="q_header">
+                        <th class="q">문제</th>
+                        <th class="u_a">제출 답안</th>
+                        <th class="c_a">정답</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="s_wrap" id="sWrap0">
+                        <td class="result" id="r0"></td>
+                        <td class="result0"></td>
+                        <td class="cor_ans" id="c0"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap1">
+                        <td class="result" id="r1"></td>
+                        <td class="result1"></td>
+                        <td class="cor_ans" id="c1"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap2">
+                        <td class="result" id="r2"></td>
+                        <td class="result2"></td>
+                        <td class="cor_ans" id="c2"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap3">
+                        <td class="result" id="r3"></td>
+                        <td class="result3"></td>
+                        <td class="cor_ans" id="c3"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap4">
+                        <td class="result" id="r4"></td>
+                        <td class="result4"></td>
+                        <td class="cor_ans" id="c4"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap5">
+                        <td class="result" id="r5"></td>
+                        <td class="result5"></td>
+                        <td class="cor_ans" id="c5"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap6">
+                        <td class="result" id="r6"></td>
+                        <td class="result6"></td>
+                        <td class="cor_ans" id="c6"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap7">
+                        <td class="result" id="r7"></td>
+                        <td class="result7"></td>
+                        <td class="cor_ans" id="c7"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap8">
+                        <td class="result" id="r8"></td>
+                        <td class="result8"></td>
+                        <td class="cor_ans" id="c8"></td>
+                    </tr>
+                    <tr class="s_wrap" id="sWrap9">
+                        <td class="result" id="r9"></td>
+                        <td class="result9"></td>
+                        <td class="cor_ans" id="c9"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="btn_wrap">
+                <button onclick="re()" id="reBtn">다시하기</button>
+                <button onclick="javascript:location.href='./3_letter_code.html'">메인으로 돌아가기</button>
+            </div>
+        </div>
+        <div class="btn_sol">
+            <button onclick="javascript:location.href='./3_letter_code.html'">메인으로 돌아가기</button>
+        </div>
+    </main>
+</body>
+</html>
