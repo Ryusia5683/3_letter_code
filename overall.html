@@ -80,6 +80,7 @@
         }
         let quiz_show = function() {
             if ($('#0').text() === ''|| $('#c0').text() != '') {
+                $('.btn_sol').css('display', 'none');
                 quiz_load();
                 return;
             }

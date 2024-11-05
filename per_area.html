@@ -170,6 +170,7 @@
         let ind_show = function() {
             if ($('#0').text() === '' || $('#c0').text() != '') {
                 ind_load();
+                $('.btn_sol').css('display', 'none');
                 return;
             }
             for (let i = 0; i < 10; i++) {
@@ -197,6 +198,7 @@
         let grp_show = function() {
             if ($('#0').text() == '' || $('#c0').text() != '') {
                 grp_load();
+                $('.btn_sol').css('display', 'none');
                 return;
             }
             for (let i = 0; i < 10; i++) {
