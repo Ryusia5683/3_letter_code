@@ -110,6 +110,9 @@
             numArr = [];
             qArr = [];
             ind = document.getElementById('sel_ind').value; 
+            let qNum = 10;
+            if (ind == 3)   qNum = 9;
+            else            qNum = 10;
             ctgr = 'i';
             for (let i = 0; i < 10; i++) {
                 if ($('#' + i).text() != '') {
@@ -121,8 +124,16 @@
                     $('.result_wrapper').css('display', 'none');
                 }
             }
-            for (let i = 0; i < 10; i++) {
-                let length = rand(cde[ind][0].length);
+            
+            if (qNum == 9) {
+                $('.q_wrap:nth-of-type(10)').css('display', 'none');
+                $('#sWrap9').css('display', 'none');
+            } else {
+                $('.q_wrap:nth-of-type(10)').css('display', 'flex');
+                $('#sWrap9').css('display', 'block');
+            }
+            for (let i = 0; i < qNum; i++) {
+                let length = cde[ind][0].length;
                 let n1 = rand(2);
                 let n2 = rand(length);
                 if (!sameNum(n2)) {
@@ -153,7 +164,7 @@
                 }
             }
             for (let i = 0; i < 10; i++) {
-                let length = rand(grpCde[grp][0].length);
+                let length = grpCde[grp][0].length;
                 let n1 = rand(2);
                 let n2 = rand(length);
                 if (!sameNum(n2)) {
