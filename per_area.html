@@ -233,7 +233,7 @@
                 $('.result' + i).removeClass('cor_ans');
                 $('.result' + i).removeClass('inc_ans');
                 let userAns = $('input[name=' + i + ']').val().toUpperCase().replaceAll(' ', '').replaceAll(',', '');
-                $('.result' + i).text(userAns);
+                $('.result' + i).text($('input[name=' + i + ']').val());
                 let an1 = numArr[i].split(',')[1];
                 let an2 = numArr[i].split(',')[2];
                 if (an1 == 0)   an1 = 1

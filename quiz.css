@@ -38,6 +38,7 @@
 .q_wrap, .s_wrap {
     margin-top: 10px;
 }
+.q_wrap input[type='text'] { font-size: 1em; }
 .btn_wrap {
     display: flex;
     justify-content: space-between;
@@ -52,7 +53,6 @@
 /* .btn_sol button { margin: 0 auto; } */
 table {
     margin: 0 auto;
-    width: 80%;
     /* border-collapse: separate;
     border-spacing: 10px 10px; */
     border-collapse: collapse;
@@ -65,6 +65,7 @@ table {
 table th, table td {
     padding: 10px;
     text-align: left;
+    width: 33%;
 }
 
 table thead {
@@ -84,6 +85,10 @@ th {
 /* th, td { text-align: center; } */
 /* .q_wrap:nth-of-type(2), .s_wrap:nth-of-type(2) {} */
 
+/* ============================1080이상======================== */
+@media (min-width: 1080px){
+    .sel { width: 100%; }
+}
 /* ============================1080======================== */
 @media (max-width: 1080px){
     main { font-size: 0.5em; }
