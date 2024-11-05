@@ -24,6 +24,10 @@
 }
 /* ============================768======================== */
 @media (max-width: 768px){ 
+    .sel { 
+        width: 80%;
+        margin: 0 auto;
+    }
     .sel_wrapper:nth-of-type(1) {
         width: 100%; 
     }
@@ -32,4 +36,9 @@
     .quiz_wrapper { margin: 1em 0; }
     .q_wrap p { font-size: 1.2em; }
     .btn_wrap button { font-size: 0.6em; }
+}
+@media (max-width: 768px){ 
+    .btn_wrap {
+        width: 55%;
+    }
 }
