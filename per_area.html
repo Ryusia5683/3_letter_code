@@ -87,6 +87,16 @@
             ]
         ];
 
+        function changeWidth(){
+            var windowWidth = $( window ).innerWidth();
+            $('main').css('width', windowWidth * 0.8);
+            // $('main').css('font-size', '0.8rem');
+        }
+        $( window ).resize(function() {
+            //창크기 변화 감지
+            changeWidth();
+        });
+        $(window).on('load', changeWidth);
 
         let rand = function(n){
             return Math.floor( Math.random() * n );

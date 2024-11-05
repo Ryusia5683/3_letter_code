@@ -1,10 +1,10 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-html,body{ margin:0; }
+html,body{ margin:0; font-size: 30px; }
 *{
     box-sizing: border-box;
-    font-size: 30px;
+    /* font-size: 30px; */
     font-family: Arial, Helvetica, sans-serif;
 }
 ul,li{
@@ -18,10 +18,6 @@ img{
 }
 a{text-decoration: none;}
 
-main {
-    width: 80%;
-    margin: 30px auto;
-}
 
 .rapper {
     width: 100%;
@@ -33,16 +29,6 @@ h1 {
 .btnRapper{
     margin: 10px;
 }
-select {
-    vertical-align: middle;
-    padding: 10px;
-}
-button {
-    font-size: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    vertical-align: middle;
-}
 
 input {
     padding: 10px;
@@ -51,4 +37,23 @@ input {
     width: 80%;
     margin: 100px auto;
     text-align: center;
+}
+@media (max-width: 1920px) {
+    main {
+        width: 80%;
+        margin: 30px auto;
+    }
+    select {
+        vertical-align: middle;
+        padding: 10px;
+        font-size: 0.7em;
+    }
+    button {
+        /* font-size: 15px; */
+        font-size: 0.5em;
+        padding: 10px;
+        border-radius: 10px;
+        vertical-align: middle;
+    }
+    
 }

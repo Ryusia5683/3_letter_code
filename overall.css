@@ -1,0 +1,35 @@
+@import url(./quiz.css);
+
+
+/* ============================1080======================== */
+@media (max-width: 1080px){
+    .sel_wrapper:nth-of-type(1) { 
+        width: 80%; 
+        margin: 0 auto;
+    }
+    .sel_wrapper:nth-of-type(1) select { 
+        width: 80%;
+        font-size: 1em;
+    }
+    .sel_wrapper:nth-of-type(1) button { 
+        font-size: 1em;
+    }
+    .btn_sol button { font-size: 1em; }
+    .q_wrap p { font-size: 1.5em; }
+    .btn_wrap button { font-size: 1em; }
+    .result_wrapper table {
+        width: 100%;
+        font-size: 1.5em;
+    }
+}
+/* ============================768======================== */
+@media (max-width: 768px){ 
+    .sel_wrapper:nth-of-type(1) {
+        width: 100%; 
+    }
+    .sel_wrapper button { width: 15%; }
+    .btn_sol button { font-size: 0.6em; }
+    .quiz_wrapper { margin: 1em 0; }
+    .q_wrap p { font-size: 1.2em; }
+    .btn_wrap button { font-size: 0.6em; }
+}
