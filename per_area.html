@@ -149,6 +149,9 @@
         }
         let grp = 0;
         let grp_load = function () {
+            if ($('.q_wrap:nth-of-type(10)').css('display') == 'none') {
+                $('.q_wrap:nth-of-type(10)').css('display', 'flex');
+            }
             numArr = [];
             qArr = [];
             grp = document.getElementById('sel_grp').value; 
