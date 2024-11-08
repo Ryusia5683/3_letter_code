@@ -20,7 +20,7 @@
             ['TOKYO', 'TOKYO/NARITA', 'TOKYO/HANEDA', 'OSAKA',	'OSAKA/KANSAI', 'AOMORI', 'SAPPORO', 'SAPPORO/CHITOSE', 'KOMATSU', 'SHIZUOKA', 'KITAKYUSHU', 'FUKUOKA', 
             'NIIGATA', 'KAGOSHIMA', 'NAGASAKI', 'OITA', 'OKAYAMA', 'AKITA', 'NAGOYA', 'HAKODATE', 'OKINAWA', 'ASAHIKAWA', 'BEIJING', 'JINAN', 'QINGDAO', 'SHANGHAI(상하이/홍차오)', 
             'SHENYANG', 'TIANJIN', 'XIAMEN', 'YANTAI', 'CHANGSHA', 'SHENZHEN', 'GUANGZHOU', 'XIAN', 'HANGZHOU', 'NANJING', 'GUIYANG', 'MACAU', 'DALIAN', 'KUNMING', 
-            'SANYA', 'SHANGAI(상하이/푸동)', 'WUHAN', 'YANJI', 'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE', 
+            'SANYA', 'SHANGHAI(상하이/푸동)', 'WUHAN', 'YANJI', 'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE', 
             'BANGKOK/BANGKOK SUVARNABHUMI INTERNATIONAL APT', 'BANGKOK/DON MUEANG', 'PHUKET', 'PHNOM PENH', 'MANILA', 'SINGAPORE', 'TAIPEI', 'MUMBAI', 'KOTA KINABALU', 
             'SIEM REAP', 'CHIANGMAI', 'YANGON', 'COLOMBO', 'VIENTIENE', 'DELHI', 'TAI CHUNG', 'JAKARTA', 'JAKARTA/SOEKARNO HATTA', 'KUALA LUMPUR', 'PENANG', 'HANOI', 
             'HO CHI MINH CITY', 'DANANG', 'DENPARSAR', 'CEBU', 'KATHMANDU', 'MALE', 'NHA TRANG', 'CLARK', 'DALAT', 'PHU QUOC', 'AUCKLAND', 'FIJI, NANDI', 'GUAM', 'KOROR', 
@@ -64,7 +64,7 @@
                 }
             }
             for (let i = 0; i < 10; i++) {
-                let length = cde[0].length;
+                let length = rand(cde[0].length);
                 let n1 = rand(2);
                 let n2 = rand(length);
                 if (!sameNum(n2)) {
@@ -118,7 +118,12 @@
                 let isSlashUser = false;
                 let match = false;
                 if (userAns.includes('/'))      isSlashUser = true;
-                corAns = cde[an1][an2].replaceAll(' ', '').replaceAll(',', '');
+                corAns = cde[an1][an2];
+                let parenthesis = corAns.indexOf('(');
+                if (parenthesis > -1)      corAns = corAns.substring(0, parenthesis);
+                let comma = corAns.indexOf(',');       
+                if (comma > -1)     corAns = corAns.split(',')[1];
+                corAns = corAns.replaceAll(' ', '');
                 if (corAns.includes('/'))       isSlash = true;
                 if ((isSlash && isSlashUser) || (!isSlash && !isSlashUser)) {
                     if (corAns == userAns)      match = true;

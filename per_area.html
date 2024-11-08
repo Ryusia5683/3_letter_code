@@ -63,7 +63,7 @@
                 ['TOKYO', 'TOKYO/NARITA', 'TOKYO/HANEDA', 'OSAKA',	'OSAKA/KANSAI', 'AOMORI', 'SAPPORO', 'SAPPORO/CHITOSE', 'KOMATSU', 'SHIZUOKA', 'KITAKYUSHU', 'FUKUOKA', 
                 'NIIGATA', 'KAGOSHIMA', 'NAGASAKI', 'OITA', 'OKAYAMA', 'AKITA', 'NAGOYA', 'HAKODATE', 'OKINAWA', 'ASAHIKAWA', 'BEIJING', 'JINAN', 'QINGDAO', 'SHANGHAI(상하이/홍차오)', 
                 'SHENYANG', 'TIANJIN', 'XIAMEN', 'YANTAI', 'CHANGSHA', 'SHENZHEN', 'GUANGZHOU', 'XIAN', 'HANGZHOU', 'NANJING', 'GUIYANG', 'MACAU', 'DALIAN', 'KUNMING', 
-                'SANYA', 'SHANGAI(상하이/푸동)', 'WUHAN', 'YANJI', 'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE']
+                'SANYA', 'SHANGHAI(상하이/푸동)', 'WUHAN', 'YANJI', 'ULAANBAATAR', 'WEIHAI', 'HONG KONG', 'ZHENGZHOU', 'URUMUQI', 'MUDANJIANG', 'TUNXI', 'HEFEI', 'NANNING', 'ZHANGJIAJIE']
             ], 
             [
                 ['AKL', 'NAN', 'GUM', 'ROR', 'BNE', 'SYD', 'MEL', 'SPN', 'NBO', 'BKK', 'DMK', 'HKT', 'PNH', 'MNL', 'SIN', 'TPE', 'BOM', 'BKI', 'SAI', 'CNX', 'RGN', 'CMB', 
@@ -106,11 +106,11 @@
         let qArr = [];
         let ctgr = '';
         let ind = 0;
+        let qNum = 10;
         let ind_load = function () {
             numArr = [];
             qArr = [];
             ind = document.getElementById('sel_ind').value; 
-            let qNum = 10;
             if (ind == 3)   qNum = 9;
             else            qNum = 10;
             ctgr = 'i';
@@ -130,7 +130,7 @@
                 $('#sWrap9').css('display', 'none');
             } else {
                 $('.q_wrap:nth-of-type(10)').css('display', 'flex');
-                $('#sWrap9').css('display', 'block');
+                $('#sWrap9').css('display', 'contents');
             }
             for (let i = 0; i < qNum; i++) {
                 let length = cde[ind][0].length;
@@ -236,14 +236,14 @@
 
 
         let sub = function() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < qNum; i++) {
                 
                 if ($('input[name=' + i + ']').val() == '') {
-                    alert('모든 답을 입력하세요.');
+                    alert(i + ' / 모든 답을 입력하세요.');
                     return;
                 }
             }
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < qNum; i++) {
                 $('.result' + i).removeClass('cor_ans');
                 $('.result' + i).removeClass('inc_ans');
                 let userAns = $('input[name=' + i + ']').val().toUpperCase().replaceAll(' ', '').replaceAll(',', '');
@@ -258,13 +258,25 @@
                 let match = false;
                 if (userAns.includes('/'))      isSlashUser = true;
                 if (ctgr == 'i') {
-                    corAns = cde[ind][an1][an2].replaceAll(' ', '').replaceAll(',', '');
+                    corAns = cde[ind][an1][an2];
+                    let parenthesis = corAns.indexOf('(');
+                    if (parenthesis > -1)      corAns = corAns.substring(0, parenthesis);
+                    let comma = corAns.indexOf(',');       
+                    if (comma > -1)     corAns = corAns.split(',')[1];
+                    corAns = corAns.replaceAll(' ', '');
                 } else if (ctgr == 'g') {
-                    corAns = grpCde[grp][an1][an2].replaceAll(' ', '').replaceAll(',', '');
+                    corAns = grpCde[grp][an1][an2];
+                    let parenthesis = corAns.indexOf('(');   
+                    if (parenthesis > -1)      corAns = corAns.substring(0, parenthesis);
+                    let comma = corAns.indexOf(',');        
+                    if (comma > -1)     corAns = corAns.split(',')[1];
+                    corAns = corAns.replaceAll(' ', '');
                 } else {
                     alert('지역을 선택하세요.');
                     return;
-                }                        
+                }                
+                console.log(corAns);
+                        
                 if (corAns.includes('/'))       isSlash = true;
                 if ((isSlash && isSlashUser) || (!isSlash && !isSlashUser)) {
                     if (corAns == userAns)      match = true;
