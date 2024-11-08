@@ -56,6 +56,7 @@ table {
     /* border-collapse: separate;
     border-spacing: 10px 10px; */
     border-collapse: collapse;
+    width: 100%;
 }
 /* .table3 {
     width: 100%;
